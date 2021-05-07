@@ -1,0 +1,20 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: rest-http-example
+  labels:
+    app: rest-http-example
+    app.kubernetes.io/instance: rest-http-example
+    app.kubernetes.io/name: java
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  to:
+    kind: Service
+    name: rest-http-example
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge
+  wildcardPolicy: None

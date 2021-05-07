@@ -1,0 +1,32 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: rest-http-example
+  labels:
+    app: rest-http-example
+    app.kubernetes.io/instance: rest-http-example
+    app.kubernetes.io/name: java
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rest-http-example
+  template:
+    metadata:
+      labels:
+        app: rest-http-example
+        deploymentconfig: rest-http-example
+    spec:
+      containers:
+        - name: rest-http-example
+          image: quay.io/ckavili/rest-http-example:latest 
+          ports:
+      serviceAccountName: app-sa
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 8443
+              protocol: TCP
+            - containerPort: 8778
+              protocol: TCP
+
