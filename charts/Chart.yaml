@@ -1,0 +1,11 @@
+apiVersion: v2
+name: rest-http-example
+description: rest-http-example to demonstrate hpw configmap works in k8s
+version: 0.0.1
+appVersion: "0.1.1"
+home: https://github.com/ckavili/rest-http-example.git
+keywords:
+  - http-example
+  - configmap
+maintainers:
+  - name: ckavili

@@ -1,0 +1,27 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: {{ template "rest-http-example.fullname" . }}
+  labels:
+    app: {{ template "rest-http-example.fullname" . }}
+    app.kubernetes.io/instance: {{ template "rest-http-example.fullname" . }}
+    app.kubernetes.io/name: java
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ template "rest-http-example.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "rest-http-example.fullname" . }}
+    spec:
+      containers:
+        - name: {{ template "rest-http-example.fullname" . }}
+          image: {{ .Values.image.repository_url }}/{{ .Values.image.repository_name }}/{{ .Values.image.image_name }}:{{ .Values.image.tag }} 
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      serviceAccountName: {{ .Values.serviceaccount }}
+

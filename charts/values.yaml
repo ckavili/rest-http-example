@@ -1,0 +1,17 @@
+image:
+  repository_url: quay.io
+  repository_name: ckavili
+  image_name: rest-http-example
+  tag: latest
+
+service:
+  type: ClusterIP
+  externalPort: 8080
+
+route:
+  enabled: true
+
+serviceaccount: app-sa
+
+configmap:
+  message: 

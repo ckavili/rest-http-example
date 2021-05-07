@@ -1,0 +1,17 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ template "rest-http-example.fullname" . }}
+  labels:
+    app: {{ template "rest-http-example.fullname" . }}
+    app.kubernetes.io/instance: {{ template "rest-http-example.fullname" . }}
+    app.kubernetes.io/name: java
+spec:
+  ports:
+    - name: {{ .Values.service.externalPort }}-tcp
+      protocol: TCP
+      port: {{ .Values.service.externalPort }}
+      targetPort: {{ .Values.service.externalPort }}
+  selector:
+    app: {{ template "rest-http-example.fullname" . }}

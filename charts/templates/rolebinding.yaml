@@ -2,9 +2,9 @@
 apiVersion: authorization.openshift.io/v1
 kind: RoleBinding
 metadata:
-  name: role-view-default
+  name: {{ .Values.serviceaccount }}-role-view-default
 subjects:
 - kind: ServiceAccount
-  name: app-sa
+  name: {{ .Values.serviceaccount }}
 roleRef:
   name: view

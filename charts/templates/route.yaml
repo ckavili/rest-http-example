@@ -1,0 +1,24 @@
+{{- if .Values.route.enabled }}
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: {{ template "rest-http-example.fullname" . }}
+  labels:
+    app: {{ template "rest-http-example.fullname" . }}
+    app.kubernetes.io/instance: {{ template "rest-http-example.fullname" . }}
+    app.kubernetes.io/name: java
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  to:
+    kind: Service
+    name: {{ template "rest-http-example.fullname" . }}
+    weight: 100
+  port:
+    targetPort: {{ .Values.route.targetPort | default "8080-tcp" }}
+  tls:
+    termination: edge
+  wildcardPolicy: None
+{{- end -}}
+  

@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  labels:
+    app: {{ template "rest-http-example.fullname" . }}
+    app.kubernetes.io/instance: {{ template "rest-http-example.fullname" . }}
+data:
+  application.yml: |
+    greeting:
+      message: "Hello %s from a ConfigMap!"
