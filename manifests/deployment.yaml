@@ -22,11 +22,11 @@ spec:
         - name: rest-http-example
           image: quay.io/ckavili/rest-http-example:latest 
           ports:
-      serviceAccountName: app-sa
             - containerPort: 8080
               protocol: TCP
             - containerPort: 8443
               protocol: TCP
             - containerPort: 8778
               protocol: TCP
+      serviceAccountName: app-sa
 

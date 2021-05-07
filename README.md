@@ -1,0 +1,1 @@
+Example application to demonstrate how configmaps work! :)
